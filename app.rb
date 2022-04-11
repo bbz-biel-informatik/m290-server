@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'sinatra/cors'
 require 'sinatra/activerecord'
 require 'sinatra/reloader'
 require 'logger'
@@ -12,10 +11,6 @@ end
 
 class M290 < Sinatra::Base
   register Sinatra::ActiveRecordExtension
-
-  set :allow_origin, "*"
-  set :allow_methods, "*"
-  set :allow_headers, "*"
 
   configure :development do
     register Sinatra::Reloader
