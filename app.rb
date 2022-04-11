@@ -26,6 +26,7 @@ class M290 < Sinatra::Base
   post '/measurements' do
     request.body.rewind
     payload = JSON.parse(request.body.read)
+    puts payload.inspect
     sensor = Sensor.find_or_create_by(mac_address: payload['mac_address'])
 
     measurement = sensor.measurements.create(
@@ -51,6 +52,18 @@ class M290 < Sinatra::Base
       status 200
       content_type 'application/json'
       body measurements.to_json
+    end
+  end
+
+  get '/sensors' do
+    sensors = Sensor.all
+    if sensors.empty?
+      status 204
+      body ''
+    else
+      status 200
+      content_type 'application/json'
+      body sensors.to_json
     end
   end
 end
