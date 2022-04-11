@@ -49,6 +49,7 @@ class M290 < Sinatra::Base
       body ''
     else
       status 200
+      content_type 'application/json'
       body measurements.to_json
     end
   end
