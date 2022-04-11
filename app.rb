@@ -26,7 +26,6 @@ class M290 < Sinatra::Base
   post '/measurements' do
     request.body.rewind
     payload = JSON.parse(request.body.read)
-    puts payload.inspect
     sensor = Sensor.find_or_create_by(mac_address: payload['mac_address'])
 
     measurement = sensor.measurements.create(
@@ -65,5 +64,18 @@ class M290 < Sinatra::Base
       content_type 'application/json'
       body sensors.to_json
     end
+  end
+
+  post '/query' do
+    request.body.rewind
+    payload = JSON.parse(request.body.read)
+    res = ''
+    ActiveRecord::Base.transaction do
+      res = ActiveRecord::Base.connection.execute(payload['query'])
+      raise ActiveRecord::Rollback
+    end
+    status 200
+    content_type 'application/json'
+    body res.to_json
   end
 end
