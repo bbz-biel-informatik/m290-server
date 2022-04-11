@@ -5,6 +5,8 @@ class CreateMeasurements < ActiveRecord::Migration[7.0]
       t.float :temperature, null: false
       t.float :humidity, null: false
       t.float :soil_moisture, null: false
+
+      t.timestamps
     end
   end
 end
