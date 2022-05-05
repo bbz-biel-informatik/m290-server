@@ -1,0 +1,5 @@
+require_relative './fetch_weather'
+require_relative './fetch_stock'
+require_relative './fetch_crypto'
+require_relative './fetch_commodity'
+require_relative './fetch_tank'

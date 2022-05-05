@@ -1,9 +1,5 @@
 require 'clockwork'
-require_relative './jobs/fetch_weather'
-require_relative './jobs/fetch_stock'
-require_relative './jobs/fetch_crypto'
-require_relative './jobs/fetch_commodity'
-require_relative './jobs/fetch_tank'
+require_relative './jobs/main'
 
 THIRTY_MINUTES = 30 * 60
 
