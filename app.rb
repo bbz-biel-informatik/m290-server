@@ -9,12 +9,17 @@ Dir.glob("models/*.rb").each do |f|
   require_relative f
 end
 
+Dir.glob("jobs/*.rb").each do |f|
+  require_relative f
+end
+
 class M290 < Sinatra::Base
   register Sinatra::ActiveRecordExtension
 
   configure :development do
     register Sinatra::Reloader
     also_reload "models/*.rb"
+    also_reload "jobs/*.rb"
   end
 
   configure :development, :production do
