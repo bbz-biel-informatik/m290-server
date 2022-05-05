@@ -30,4 +30,9 @@ module Clockwork
   every(THIRTY_MINUTES, 'fetch_commodity_benzin') { FetchCommodity.perform_async('Benzin', 'RBUSD') }
 
   every(THIRTY_MINUTES, 'fetch_tank') { FetchTank.perform_async }
+
+  every(THIRTY_MINUTES, 'fetch_water_aare') { FetchWater.perform_async('Aare', 2135) }
+  every(THIRTY_MINUTES, 'fetch_water_gampelen') { FetchWater.perform_async('Bielersee', 2085) }
+  every(THIRTY_MINUTES, 'fetch_water_luzern') { FetchWater.perform_async('Vierwaldstättersee', 2152) }
+  every(THIRTY_MINUTES, 'fetch_water_thun') { FetchWater.perform_async('Thunersee', 2030) }
 end
