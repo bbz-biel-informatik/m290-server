@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_11_145808) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_05_182559) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "commodities", force: :cascade do |t|
+    t.string "name"
+    t.string "symbol"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cryptos", force: :cascade do |t|
+    t.string "name"
+    t.string "symbol"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "measurements", force: :cascade do |t|
     t.bigint "sensor_id", null: false
@@ -27,6 +43,32 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_145808) do
   create_table "sensors", force: :cascade do |t|
     t.string "mac_address", null: false
     t.string "student"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "name"
+    t.string "symbol"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weathers", force: :cascade do |t|
+    t.date "date"
+    t.string "location"
+    t.float "temp"
+    t.float "temp_min"
+    t.float "temp_max"
+    t.datetime "sunrise"
+    t.datetime "sunset"
+    t.float "rain"
+    t.float "snow"
+    t.string "weather"
+    t.string "weather_description"
+    t.string "weather_icon"
+    t.float "wind_speed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
