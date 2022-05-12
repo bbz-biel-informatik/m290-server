@@ -35,4 +35,6 @@ module Clockwork
   every(THIRTY_MINUTES, 'fetch_water_gampelen') { FetchWater.perform_async('Bielersee', 2085) }
   every(THIRTY_MINUTES, 'fetch_water_luzern') { FetchWater.perform_async('Vierwaldstättersee', 2152) }
   every(THIRTY_MINUTES, 'fetch_water_thun') { FetchWater.perform_async('Thunersee', 2030) }
+
+  every(THIRTY_MINUTES, 'fetch_sky_color_biel') { FetchSkyColor.perform_async('Biel', 10990, '688d47e0ed941b8b', { min_x: 100, max_x: 1200, min_y: 50, max_y: 250 }) }
 end
