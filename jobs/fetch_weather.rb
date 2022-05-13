@@ -31,7 +31,8 @@ class FetchWeather
         weather: day['weather'][0]['main'],
         weather_description: day['weather'][0]['description'],
         weather_icon: day['weather'][0]['icon'],
-        wind_speed: day['speed']
+        wind_speed: day['speed'],
+        humidity: day['humidity']
       )
     end
   end
