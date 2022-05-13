@@ -12,6 +12,7 @@ module Clockwork
   every(THIRTY_MINUTES, 'featch_weather_huttwil') { FetchWeather.perform_async('Huttwil', 47.1134, 7.8515) }
   every(THIRTY_MINUTES, 'featch_weather_melchnau') { FetchWeather.perform_async('Melchnau', 47.1822, 7.8516) }
   every(THIRTY_MINUTES, 'featch_weather_thun') { FetchWeather.perform_async('Thun', 46.7580, 7.6280) }
+  every(THIRTY_MINUTES, 'fetch_weather_burgdorf') { FetchWeather.perform_async('Burgdorf', 47.0559, 7.6272) }
 
   every(THIRTY_MINUTES, 'fetch_stock_ubs') { FetchStock.perform_async('UBS Group AG', 'UBS') }
   every(THIRTY_MINUTES, 'fetch_stock_cs') { FetchStock.perform_async('Credit Suisse Group AG', 'CS') }
