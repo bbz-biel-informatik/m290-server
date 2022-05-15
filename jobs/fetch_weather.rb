@@ -14,10 +14,10 @@ class FetchWeather
   include Sidekiq::Job
 
   def perform(location, lat, lng)
-    url = "https://api.openweathermap.org/data/2.5/forecast/daily?lat=#{lat}&lon=#{lng}&cnt=5&units=metric&appid=#{ENV['OPEN_WEATHER_API_KEY']}"
+    url = "https://api.openweathermap.org/data/2.5/onecall?lat=#{lat}&lon=#{lng}&cnt=5&units=metric&appid=#{ENV['OPEN_WEATHER_API_KEY']}"
     response = Faraday.get(url)
     data = JSON.parse(response.body)
-    data['list'].each do |day|
+    data['daily'].each do |day|
       Weather.create(
         date: DateTime.strptime(day['dt'].to_s,'%s').to_date,
         location: location,
@@ -32,7 +32,8 @@ class FetchWeather
         weather_description: day['weather'][0]['description'],
         weather_icon: day['weather'][0]['icon'],
         wind_speed: day['speed'],
-        humidity: day['humidity']
+        humidity: day['humidity'],
+        moon_phase: day['moon_phase']
       )
     end
   end
