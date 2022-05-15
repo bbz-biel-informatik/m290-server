@@ -36,6 +36,12 @@ class FetchSkyColor
     r = colors.map{|x| x[0]}.inject(:+) / colors.size
     g = colors.map{|x| x[1]}.inject(:+) / colors.size
     b = colors.map{|x| x[2]}.inject(:+) / colors.size
-    SkyColor.create!(location: location, r: color[:r], g: color[:g], b: color[:b])
+    SkyColor.create!(location: location, r: r, g: g, b: b)
   end
 end
+
+=begin
+SOLL: https://vcdn.bergfex.at/webcams/archive.new/downsized/0/10990/2022/05/15/10990_2022-05-15_1700_688d47e0ed941b8b.jpg
+IST:  https://vcdn.bergfex.at/webcams/archive.new/downsized/0/10990/2017/06/10/10990_2017-06-10_1700_688d47e0ed941b8b.jpg
+IST2: https://vcdn.bergfex.at/webcams/archive.new/downsized/0/10990/2022/05/15/10990_2022-05-15_2000_688d47e0ed941b8b.jpg
+=end
