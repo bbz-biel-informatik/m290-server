@@ -28,6 +28,7 @@ class FetchSkyColor
     pixels = image.get_pixels
     colors = []
     puts "#{image.width}x#{image.height}"
+    puts range.inspect
     (range[:min_x]..range[:max_x]).step(100).each do |x|
       (range[:min_y]..range[:max_y]).step(100).each do |y|
         colors << pixels[y][x]
