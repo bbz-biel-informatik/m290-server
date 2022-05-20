@@ -75,8 +75,13 @@ class M290 < Sinatra::Base
     request.body.rewind
     payload = JSON.parse(request.body.read)
     res = ''
+    query = payload['query']
+    if !query.downcase.index("limit")
+      query = query.gsub(";", "")
+      query = query + " LIMIT 1000;"
+    end
     ActiveRecord::Base.transaction do
-      res = ActiveRecord::Base.connection.execute(payload['query'])
+      res = ActiveRecord::Base.connection.execute(query)
       raise ActiveRecord::Rollback
     end
     status 200
