@@ -80,6 +80,7 @@ class M290 < Sinatra::Base
       query = query.gsub(";", "")
       query = query + " LIMIT 1000;"
     end
+    puts query
     ActiveRecord::Base.transaction do
       res = ActiveRecord::Base.connection.execute(query)
       raise ActiveRecord::Rollback
