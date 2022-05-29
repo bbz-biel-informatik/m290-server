@@ -100,6 +100,7 @@ GEM
       rack-protection (= 2.2.0)
       sinatra (= 2.2.0)
       tilt (~> 2.0)
+    sun_calc (0.1.0)
     thor (1.2.1)
     tilt (2.0.10)
     tzinfo (2.0.4)
@@ -126,6 +127,7 @@ DEPENDENCIES
   sinatra (= 2.2.0)
   sinatra-activerecord (= 2.0.25)
   sinatra-contrib (= 2.2.0)
+  sun_calc (= 0.1.0)
 
 RUBY VERSION
    ruby 3.0.2p107
