@@ -16,7 +16,7 @@ class FetchStock
     Stock.create!(
       name: name,
       symbol: symbol,
-      price: data['Global Quote']['5. price']
+      price: data['Global Quote']['05. price']
     )
   end
 end
