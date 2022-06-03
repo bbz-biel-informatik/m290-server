@@ -76,6 +76,10 @@ class M290 < Sinatra::Base
     payload = JSON.parse(request.body.read)
     res = ''
     query = payload['query']
+    if query.index('sensor_id = 28')
+      status 403
+      return "Forbidden"
+    end
     if !query.downcase.index("limit")
       query = query.gsub(";", "")
       query = query + " LIMIT 1000;"
