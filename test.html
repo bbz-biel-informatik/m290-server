@@ -1,0 +1,37 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titel</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.js"></script>
+  <script src="https://sensordb.bbz.cloud/scripts/v1/dblib.js"></script>
+</head>
+<body>
+
+  <canvas class="temp" width="200" height="200"></canvas>
+
+  <script>
+
+  query("SELECT users.name, count(*) FROM todos inner join users on todos.user_id = users.id group by users.name", data => {
+    const ctx = document.querySelector('.temp').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: extract(data, 'name'),
+        datasets: [{
+          label: 'Anzahl',
+          data: extract(data, 'count'),
+          borderColor: 'rgb(75, 192, 192)'
+        }],
+      }
+    });
+  });
+
+  </script>
+</body>
+</html>
+
